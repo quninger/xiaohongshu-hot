@@ -7,20 +7,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#fafafa;--card:#fff;--ink:#0a0a0a;--mute:#737373;--line:#e5e5e5;--rad:16px}
+:root{--bg:#fafafa;--card:#fff;--ink:#0a0a0a;--mute:#737373;--line:#e5e5e5;--rad:14px;--accent:#dc2626}
 body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
 
 /* Hero */
-.hero{position:relative;overflow:hidden;background:#0a0a0a;padding:56px 0 48px}
+.hero{position:relative;overflow:hidden;background:#0a0a0a;padding:52px 0 44px}
 .hero::before{content:'';position:absolute;inset:0;opacity:.05;background:
 radial-gradient(circle at 20% 30%,#fff 0%,transparent 50%),
 radial-gradient(circle at 80% 20%,#fff 0%,transparent 40%),
 radial-gradient(circle at 50% 80%,#fff 0%,transparent 50%)}
-.hero .grid-bg{position:absolute;inset:0;opacity:.035;background-image:radial-gradient(circle,#fff 1px,transparent 1px);background-size:24px 24px}
+.hero .g{position:absolute;inset:0;opacity:.035;background-image:radial-gradient(circle,#fff 1px,transparent 1px);background-size:24px 24px}
 .hero-in{max-width:1120px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
-.hero h1{font-size:clamp(26px,4vw,44px);font-weight:800;letter-spacing:-.03em;color:#fff;margin-bottom:6px;line-height:1.15}
+.hero h1{font-size:clamp(24px,4vw,42px);font-weight:800;letter-spacing:-.03em;color:#fff;margin-bottom:6px;line-height:1.15}
 .hero h1 em{font-style:normal;background:linear-gradient(135deg,#fff 30%,#a3a3a3);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero p{color:#a3a3a3;font-size:15px;margin-bottom:14px;font-weight:400}
+.hero p{color:#a3a3a3;font-size:15px;margin-bottom:12px}
 .hero-m{display:flex;gap:20px;flex-wrap:wrap}
 .hero-m span{font-size:13px;color:#525252}
 
@@ -38,45 +38,46 @@ radial-gradient(circle at 50% 80%,#fff 0%,transparent 50%)}
 
 /* Stats */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:24px 0}
-.st-c{background:var(--card);border-radius:var(--rad);padding:18px;text-align:center;border:1px solid var(--line)}
-.st-c .n{font-size:26px;font-weight:700;letter-spacing:-.03em;margin-bottom:2px}
+.st-c{background:var(--card);border-radius:var(--rad);padding:16px;text-align:center;border:1px solid var(--line)}
+.st-c .n{font-size:24px;font-weight:700;letter-spacing:-.03em;margin-bottom:2px}
 .st-c .l{font-size:12px;color:var(--mute);font-weight:500}
 @media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
 
 /* Rec */
-.rec{background:var(--card);border-radius:var(--rad);padding:16px 20px;margin-bottom:24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;border:1px solid var(--line)}
-.rec-i{width:40px;height:40px;border-radius:8px;background:#0a0a0a;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.rec{background:var(--card);border-radius:var(--rad);padding:16px 20px;margin-bottom:22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;border:1px solid var(--line)}
+.rec-i{width:40px;height:40px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
 .rec-b{flex:1;min-width:180px}
 .rec-l{font-size:10px;font-weight:600;color:var(--mute);text-transform:uppercase;letter-spacing:.05em;margin-bottom:1px}
 .rec-t{font-size:15px;font-weight:700;margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .rec-d{font-size:12px;color:var(--mute);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.rec a{display:inline-flex;align-items:center;gap:4px;padding:6px 14px;border-radius:6px;background:var(--ink);color:#fff!important;text-decoration:none;font-size:11px;font-weight:600;transition:all .12s;flex-shrink:0}
+.rec a{display:inline-flex;align-items:center;gap:4px;padding:6px 14px;border-radius:6px;background:var(--accent);color:#fff!important;text-decoration:none;font-size:11px;font-weight:600;transition:all .12s;flex-shrink:0}
 .rec a:hover{opacity:.85}
 
-/* Section header */
 .sh{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .sh h2{font-size:16px;font-weight:700}
 .sh span{font-size:12px;color:var(--mute)}
 
-/* Grid */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;margin-bottom:48px}
-.card{background:var(--card);border-radius:var(--rad);overflow:hidden;border:1px solid var(--line);text-decoration:none!important;color:inherit!important;display:block;transition:all .2s;cursor:pointer}
-.card:hover{border-color:#d4d4d4;box-shadow:0 4px 20px rgba(0,0,0,.04);transform:translateY(-2px)}
+/* === Pure text cards === */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px;margin-bottom:48px}
+.card{
+background:var(--card);border-radius:var(--rad);border:1px solid var(--line);
+text-decoration:none!important;color:inherit!important;display:block;
+padding:18px 20px;position:relative;overflow:hidden;cursor:pointer;
+transition:all .2s;
+}
+.card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--accent);opacity:.4;transition:opacity .2s}
+.card:hover{box-shadow:0 4px 20px rgba(0,0,0,.04);transform:translateY(-2px);border-color:#d4d4d4}
+.card:hover::before{opacity:1}
 
-/* Solid color image */
-.cv{height:180px;display:flex;align-items:center;justify-content:center;position:relative}
-.cv .e{font-size:42px;transition:transform .3s}
-.card:hover .cv .e{transform:scale(1.15)}
-.cr{position:absolute;top:12px;left:12px;z-index:2;width:26px;height:26px;border-radius:6px;background:rgba(255,255,255,.88);color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
-.ct{position:absolute;bottom:12px;left:12px;z-index:2;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);color:#fff;padding:3px 8px;border-radius:5px;font-size:10px;font-weight:600}
-
-.cb{padding:14px 16px 16px}
-.cb .ti{font-size:15px;font-weight:700;margin-bottom:3px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.cb .vw{font-size:12px;color:var(--mute);font-weight:500;margin-bottom:4px}
-.cb .vw b{color:var(--ink)}
-.cb .su{font-size:12px;color:var(--mute);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.cb .go{display:inline-flex;align-items:center;gap:3px;margin-top:10px;font-size:11px;font-weight:600;color:var(--ink);transition:gap .12s}
-.card:hover .cb .go{gap:6px}
+.card .top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.card .top .rk{width:24px;height:24px;border-radius:6px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.card .top .tg{font-size:11px;color:var(--mute);font-weight:500}
+.card .ti{font-size:16px;font-weight:700;line-height:1.4;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card .vw{font-size:12px;color:var(--mute);margin-bottom:6px}
+.card .vw b{color:var(--accent)}
+.card .su{font-size:13px;color:var(--mute);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card .go{display:inline-flex;align-items:center;gap:3px;margin-top:10px;font-size:12px;font-weight:600;color:var(--accent);transition:gap .12s}
+.card:hover .go{gap:6px}
 
 footer{padding:24px 0 40px;text-align:center;font-size:12px;color:var(--mute)}
 </style>
@@ -84,7 +85,7 @@ footer{padding:24px 0 40px;text-align:center;font-size:12px;color:var(--mute)}
 <body>
 
 <div class="hero">
-  <div class="grid-bg"></div>
+  <div class="g"></div>
   <div class="hero-in">
     <h1><em id="heroTitle">今天刷什么</em></h1>
     <p id="heroDesc">小红书今日热门 · 一句话看懂一个热点</p>
@@ -123,13 +124,6 @@ footer{padding:24px 0 40px;text-align:center;font-size:12px;color:var(--mute)}
 <footer>点击卡片直达小红书搜索</footer>
 
 <script>
-// Solid brand colors (shadcn/tailwind palette)
-const C=[
-"#dc2626","#ea580c","#d97706","#65a30d","#16a34a",
-"#0d9488","#2563eb","#7c3aed","#db2777"
-]
-const E=["🏔️","🏮","📸","🍜","🏔️","🌅","💄","💅","🎨"]
-
 const P=[
 {r:1,t:"用万能旅行拍照姿势美美出片",v:"918.6万",g:"🌍 旅行",s:"万能旅行拍照姿势公式，转个身低个头氛围感拉满——每一张都是朋友圈封面。",u:"https://www.xiaohongshu.com/search_result?keyword=用万能旅行拍照姿势美美出片&type=51"},
 {r:2,t:"耗时三年拍下古诗词里的中国",v:"907万",g:"🏮 文化",s:"摄影师走遍大江南北，把古诗词意境变成照片——「落霞与孤鹜齐飞」是真实存在的。",u:"https://www.xiaohongshu.com/search_result?keyword=耗时三年拍下古诗词里的中国&type=51"},
@@ -143,9 +137,9 @@ const P=[
 ]
 
 const T={
-1:{t:"今天刷什么",d:"小红书今日热门 · 一句话看懂一个热点",l:"9 条"},
-2:{t:"今天也元气满满",d:"粉粉嫩嫩的热门合集 💖",l:"9 条"},
-3:{t:"在夏天的风里刷小红书",d:"薄荷味的热门推荐 🍃",l:"9 条"}
+1:{t:"今天刷什么",d:"小红书今日热门 · 一句话看懂一个热点",l:"9 条",c:"#dc2626"},
+2:{t:"今天也元气满满",d:"粉粉嫩嫩的热门合集 💖",l:"9 条",c:"#e84393"},
+3:{t:"在夏天的风里刷小红书",d:"薄荷味的热门推荐 🍃",l:"9 条",c:"#00b894"}
 }
 
 function init(){
@@ -161,14 +155,17 @@ document.getElementById('hHot').textContent=P.length
 document.getElementById('hTags').textContent=ts.length
 document.getElementById('hViews').textContent=(tv/10000).toFixed(1)
 const tp=P[0];document.getElementById('recSection').innerHTML=
-`<div class="rec"><div class="rec-i">🏆</div><div class="rec-b"><div class="rec-l">⭐ 今日重点推荐</div><div class="rec-t">#${tp.r} ${tp.t}</div><div class="rec-d">${tp.s}</div></div><a href="${tp.u}" target="_blank" rel="noopener">去看看 · ${tp.v}</a></div>`
+`<div class="rec"><div class="rec-i">⭐</div><div class="rec-b"><div class="rec-l">今日重点推荐</div><div class="rec-t">#${tp.r} ${tp.t}</div><div class="rec-d">${tp.s}</div></div><a href="${tp.u}" target="_blank" rel="noopener">去看看 · ${tp.v}</a></div>`
 renderCards()}
 
 function renderCards(){
-document.getElementById('cardGrid').innerHTML=P.map((p,i)=>`
+document.getElementById('cardGrid').innerHTML=P.map(p=>`
 <a class="card" href="${p.u}" target="_blank" rel="noopener noreferrer">
-<div class="cv" style="background:${C[i]}"><span class="e">${E[i]}</span><div class="cr">${p.r}</div><div class="ct">${p.g}</div></div>
-<div class="cb"><div class="ti">${p.t}</div><div class="vw">👁️ <b>${p.v}</b> 浏览</div><div class="su">${p.s}</div><div class="go">去小红书看看 →</div></div></a>`).join('')}
+<div class="top"><div class="rk">${p.r}</div><span class="tg">${p.g}</span></div>
+<div class="ti">${p.t}</div>
+<div class="vw">👁️ <b>${p.v}</b> 浏览</div>
+<div class="su">${p.s}</div>
+<div class="go">去小红书看看 →</div></a>`).join('')}
 
 function setTheme(n){
 const t=T[n]
@@ -177,8 +174,9 @@ document.getElementById('heroDesc').textContent=t.d
 document.getElementById('themeLabel').textContent=t.l
 document.getElementById('themeSelect').value=n
 document.body.style.background=['#fafafa','#fef2f4','#f0fdfa'][n-1]
+document.documentElement.style.setProperty('--accent',t.c)
 const ri=document.querySelector('.rec-i')
-if(ri)ri.textContent=['🏆','💖','🍃'][n-1]}
+if(ri)ri.textContent=['⭐','💖','🍃'][n-1]}
 
 init();setTheme(1)
 </script>
