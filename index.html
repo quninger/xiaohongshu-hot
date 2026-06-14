@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>小红书热门趋势</title>
+<title>小红书数据看板</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -11,41 +11,40 @@
 body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
 
 /* Hero */
-.hero{position:relative;overflow:hidden;background:#0a0a0a;padding:52px 0 44px}
+.hero{position:relative;overflow:hidden;background:#0a0a0a;padding:48px 0 40px}
 .hero::before{content:'';position:absolute;inset:0;opacity:.05;background:
 radial-gradient(circle at 20% 30%,#fff 0%,transparent 50%),
 radial-gradient(circle at 80% 20%,#fff 0%,transparent 40%),
 radial-gradient(circle at 50% 80%,#fff 0%,transparent 50%)}
 .hero .g{position:absolute;inset:0;opacity:.035;background-image:radial-gradient(circle,#fff 1px,transparent 1px);background-size:24px 24px}
 .hero-in{max-width:1120px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
-.hero h1{font-size:clamp(24px,4vw,42px);font-weight:800;letter-spacing:-.03em;color:#fff;margin-bottom:6px;line-height:1.15}
+.hero h1{font-size:clamp(22px,3.5vw,38px);font-weight:800;letter-spacing:-.03em;color:#fff;margin-bottom:4px;line-height:1.15}
 .hero h1 em{font-style:normal;background:linear-gradient(135deg,#fff 30%,#a3a3a3);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero p{color:#a3a3a3;font-size:15px;margin-bottom:12px}
+.hero .sub{color:#a3a3a3;font-size:14px;margin-bottom:10px}
 .hero-m{display:flex;gap:20px;flex-wrap:wrap}
 .hero-m span{font-size:13px;color:#525252}
 
-/* Sticky */
-.sticky{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
-.sticky-in{max-width:1120px;margin:0 auto;padding:8px 28px;display:flex;align-items:center;justify-content:space-between;gap:8px}
-.sticky-l{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600}
-.sticky-l .b{background:var(--ink);color:#fff;padding:1px 8px;border-radius:5px;font-size:10px;font-weight:600}
-.sticky-p{display:flex;gap:4px;flex-wrap:wrap}
-.sticky-p a{padding:2px 8px;border-radius:5px;background:#f5f5f5;color:var(--mute);font-size:11px;text-decoration:none;transition:all .12s}
-.sticky-p a:hover{background:var(--ink);color:#fff}
-.sticky-r select{padding:3px 22px 3px 8px;border:1px solid var(--line);border-radius:6px;background:#fff;font-size:11px;font-weight:500;font-family:inherit;color:var(--ink);cursor:pointer;outline:none;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='5' viewBox='0 0 9 5'%3E%3Cpath d='M1 1l3.5 3L8 1' stroke='%23737373' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 7px center;background-size:9px}
+/* Tabs */
+.tab-bar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.tab-in{max-width:1120px;margin:0 auto;padding:0 28px;display:flex;align-items:center;gap:0;overflow-x:auto}
+.tab{flex-shrink:0;padding:12px 18px;font-size:13px;font-weight:600;color:var(--mute);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap;background:none;border-top:none;border-left:none;border-right:none;font-family:inherit}
+.tab:hover{color:var(--ink)}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tab-r{display:flex;align-items:center;gap:10px;margin-left:auto;padding:8px 0}
+.tab-r select{padding:3px 22px 3px 8px;border:1px solid var(--line);border-radius:6px;background:#fff;font-size:11px;font-family:inherit;color:var(--ink);cursor:pointer;outline:none;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='5' viewBox='0 0 9 5'%3E%3Cpath d='M1 1l3.5 3L8 1' stroke='%23737373' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 7px center;background-size:9px}
 
 .container{max-width:1120px;margin:0 auto;padding:0 28px}
 
 /* Stats */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:24px 0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0}
 .st-c{background:var(--card);border-radius:var(--rad);padding:16px;text-align:center;border:1px solid var(--line)}
 .st-c .n{font-size:24px;font-weight:700;letter-spacing:-.03em;margin-bottom:2px}
 .st-c .l{font-size:12px;color:var(--mute);font-weight:500}
 @media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
 
 /* Rec */
-.rec{background:var(--card);border-radius:var(--rad);padding:16px 20px;margin-bottom:22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;border:1px solid var(--line)}
-.rec-i{width:40px;height:40px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.rec{background:var(--card);border-radius:var(--rad);padding:16px 20px;margin-bottom:20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;border:1px solid var(--line)}
+.rec-i{width:40px;height:40px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;color:#fff}
 .rec-b{flex:1;min-width:180px}
 .rec-l{font-size:10px;font-weight:600;color:var(--mute);text-transform:uppercase;letter-spacing:.05em;margin-bottom:1px}
 .rec-t{font-size:15px;font-weight:700;margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -57,27 +56,23 @@ radial-gradient(circle at 50% 80%,#fff 0%,transparent 50%)}
 .sh h2{font-size:16px;font-weight:700}
 .sh span{font-size:12px;color:var(--mute)}
 
-/* === Pure text cards === */
+/* Cards */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px;margin-bottom:48px}
-.card{
-background:var(--card);border-radius:var(--rad);border:1px solid var(--line);
-text-decoration:none!important;color:inherit!important;display:block;
-padding:18px 20px;position:relative;overflow:hidden;cursor:pointer;
-transition:all .2s;
-}
+.card{background:var(--card);border-radius:var(--rad);border:1px solid var(--line);text-decoration:none!important;color:inherit!important;display:block;padding:18px 20px;position:relative;overflow:hidden;cursor:pointer;transition:all .2s}
 .card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--accent);opacity:.4;transition:opacity .2s}
 .card:hover{box-shadow:0 4px 20px rgba(0,0,0,.04);transform:translateY(-2px);border-color:#d4d4d4}
 .card:hover::before{opacity:1}
-
-.card .top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-.card .top .rk{width:24px;height:24px;border-radius:6px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
-.card .top .tg{font-size:11px;color:var(--mute);font-weight:500}
-.card .ti{font-size:16px;font-weight:700;line-height:1.4;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.card .vw{font-size:12px;color:var(--mute);margin-bottom:6px}
+.card .tp{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.card .tp .rk{width:24px;height:24px;border-radius:6px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.card .tp .tg{font-size:11px;color:var(--mute);font-weight:500}
+.card .ti{font-size:16px;font-weight:700;line-height:1.4;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card .vw{font-size:12px;color:var(--mute);margin-bottom:4px}
 .card .vw b{color:var(--accent)}
 .card .su{font-size:13px;color:var(--mute);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .card .go{display:inline-flex;align-items:center;gap:3px;margin-top:10px;font-size:12px;font-weight:600;color:var(--accent);transition:gap .12s}
 .card:hover .go{gap:6px}
+.card .meta-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.card .meta-tags span{font-size:10px;padding:2px 6px;border-radius:4px;background:#f5f5f5;color:var(--mute);font-weight:500}
 
 footer{padding:24px 0 40px;text-align:center;font-size:12px;color:var(--mute)}
 </style>
@@ -87,21 +82,18 @@ footer{padding:24px 0 40px;text-align:center;font-size:12px;color:var(--mute)}
 <div class="hero">
   <div class="g"></div>
   <div class="hero-in">
-    <h1><em id="heroTitle">今天刷什么</em></h1>
-    <p id="heroDesc">小红书今日热门 · 一句话看懂一个热点</p>
-    <div class="hero-m">
-      <span>🔥 <span id="hHot">9</span> 条热门</span>
-      <span>🏷️ <span id="hTags">4</span> 个领域</span>
-      <span>👁️ <span id="hViews">7.3</span> 亿浏览</span>
-    </div>
+    <h1><em id="heroTitle">小红书数据看板</em></h1>
+    <p class="sub" id="heroSub">热门话题 · 涨粉账号 · 热门笔记 ｜ 数据来源 千瓜</p>
+    <div class="hero-m" id="heroMeta"></div>
   </div>
 </div>
 
-<div class="sticky">
-  <div class="sticky-in">
-    <div class="sticky-l"><span>🔥 精选</span><span class="b" id="todayTag"></span></div>
-    <div class="sticky-p" id="topPicks"></div>
-    <div class="sticky-r">
+<div class="tab-bar">
+  <div class="tab-in">
+    <button class="tab active" data-tab="0" onclick="switchTab(0)">🔥 热门话题</button>
+    <button class="tab" data-tab="1" onclick="switchTab(1)">📈 涨粉账号</button>
+    <button class="tab" data-tab="2" onclick="switchTab(2)">💥 热门笔记</button>
+    <div class="tab-r">
       <select id="themeSelect" onchange="setTheme(+this.value)">
         <option value="1">☀️ 明亮</option>
         <option value="2">🌸 元气</option>
@@ -112,84 +104,148 @@ footer{padding:24px 0 40px;text-align:center;font-size:12px;color:var(--mute)}
   </div>
 </div>
 
-<div class="container">
-  <div class="stats" id="statsRow"></div>
-  <div id="recSection"></div>
-  <div class="sh">
-    <h2>🔥 今日热门</h2>
-    <span id="themeLabel">9 条</span>
-  </div>
-  <div class="grid" id="cardGrid"></div>
-</div>
+<div class="container" id="mainContent"></div>
 
-<footer>点击卡片直达小红书搜索</footer>
+<footer>点击卡片直达 · 数据来源 千瓜数据</footer>
 
 <script>
-const P=[
-{r:1,t:"用万能旅行拍照姿势美美出片",v:"918.6万",g:"🌍 旅行",s:"万能旅行拍照姿势公式，转个身低个头氛围感拉满——每一张都是朋友圈封面。",u:"https://www.xiaohongshu.com/search_result?keyword=用万能旅行拍照姿势美美出片&type=51"},
-{r:2,t:"耗时三年拍下古诗词里的中国",v:"907万",g:"🏮 文化",s:"摄影师走遍大江南北，把古诗词意境变成照片——「落霞与孤鹜齐飞」是真实存在的。",u:"https://www.xiaohongshu.com/search_result?keyword=耗时三年拍下古诗词里的中国&type=51"},
-{r:3,t:"我拍到了海鸥雨",v:"887.5万",g:"📸 摄影",s:"数百只海鸥同时振翅，在海面形成一场「海鸥雨」——大自然的随机艺术永远比精心设计更震撼。",u:"https://www.xiaohongshu.com/search_result?keyword=我拍到了海鸥雨&type=51"},
-{r:4,t:"超日常美食教程速来get",v:"867.6万",g:"🍜 美食",s:"10分钟搞定有仪式感的一餐！不想点外卖又懒得做大菜？厨房小白也能秒变大厨。",u:"https://www.xiaohongshu.com/search_result?keyword=超日常美食教程速来get&type=51"},
-{r:5,t:"定格这一刻的日照金山",v:"857万",g:"🏔 旅行",s:"梅里雪山的日照金山被完美定格——高反也值得，这是大自然给早起的人最大的奖赏。",u:"https://www.xiaohongshu.com/search_result?keyword=定格这一刻的日照金山&type=51"},
-{r:6,t:"拍到了洱海的丁达尔效应",v:"695.5万",g:"📸 摄影",s:"阳光穿过云层洒向洱海形成完美光束——不是滤镜，是大自然自己的光影魔法。",u:"https://www.xiaohongshu.com/search_result?keyword=拍到了洱海的丁达尔效应&type=51"},
-{r:7,t:"珠圆玉润妆完全是淡颜天菜",v:"684.7万",g:"💄 美妆",s:"淡颜系本命妆容！光泽感取代浓墨重彩，温柔又高级——越看越耐看。",u:"https://www.xiaohongshu.com/search_result?keyword=珠圆玉润妆完全是淡颜天菜&type=51"},
-{r:8,t:"碎钻美甲指尖藏着细碎星光",v:"652万",g:"💅 美甲",s:"把星空藏在指尖——极细闪粉和碎钻打造「指尖星河」，举手投足都是细碎的光。",u:"https://www.xiaohongshu.com/search_result?keyword=碎钻美甲指尖藏着细碎星光&type=51"},
-{r:9,t:"我来当旅行中的颜色猎手",v:"642.3万",g:"🎨 生活",s:"把旅行变成颜色收集游戏！在每个城市寻找它的代表色——你的城市是什么颜色？",u:"https://www.xiaohongshu.com/search_result?keyword=我来当旅行中的颜色猎手&type=51"}
-]
+// ===== DATA =====
+const DATA = [
+  // Tab 0: 热门话题
+  {
+    title:"今天刷什么", stat:["9 条","4 个领域","7.3 亿","旅行·摄影·美食"],
+    rec:{i:"⭐",l:"今日重点推荐",t:"#1 用万能旅行拍照姿势美美出片",d:"万能旅行拍照姿势公式，转个身低个头氛围感拉满——每一张都是朋友圈封面。",v:"918.6万",
+        u:"https://www.xiaohongshu.com/search_result?keyword=用万能旅行拍照姿势美美出片&type=51"},
+    cards:[
+      {r:1,t:"用万能旅行拍照姿势美美出片",v:"918.6万",g:"🌍 旅行",s:"万能旅行拍照姿势公式，转个身低个头氛围感拉满——每一张都是朋友圈封面。",
+       u:"https://www.xiaohongshu.com/search_result?keyword=用万能旅行拍照姿势美美出片&type=51"},
+      {r:2,t:"耗时三年拍下古诗词里的中国",v:"907万",g:"🏮 文化",s:"摄影师走遍大江南北，把古诗词意境变成照片——「落霞与孤鹜齐飞」是真实存在的。",
+       u:"https://www.xiaohongshu.com/search_result?keyword=耗时三年拍下古诗词里的中国&type=51"},
+      {r:3,t:"我拍到了海鸥雨",v:"887.5万",g:"📸 摄影",s:"数百只海鸥同时振翅，在海面形成一场「海鸥雨」——大自然的随机艺术永远比精心设计更震撼。",
+       u:"https://www.xiaohongshu.com/search_result?keyword=我拍到了海鸥雨&type=51"},
+      {r:4,t:"超日常美食教程速来get",v:"867.6万",g:"🍜 美食",s:"10分钟搞定有仪式感的一餐！不想点外卖又懒得做大菜？厨房小白也能秒变大厨。",
+       u:"https://www.xiaohongshu.com/search_result?keyword=超日常美食教程速来get&type=51"},
+      {r:5,t:"定格这一刻的日照金山",v:"857万",g:"🏔 旅行",s:"梅里雪山的日照金山被完美定格——高反也值得，这是大自然给早起的人最大的奖赏。",
+       u:"https://www.xiaohongshu.com/search_result?keyword=定格这一刻的日照金山&type=51"},
+      {r:6,t:"拍到了洱海的丁达尔效应",v:"695.5万",g:"📸 摄影",s:"阳光穿过云层洒向洱海形成完美光束——不是滤镜，是大自然自己的光影魔法。",
+       u:"https://www.xiaohongshu.com/search_result?keyword=拍到了洱海的丁达尔效应&type=51"},
+      {r:7,t:"珠圆玉润妆完全是淡颜天菜",v:"684.7万",g:"💄 美妆",s:"淡颜系本命妆容！光泽感取代浓墨重彩，温柔又高级——越看越耐看。",
+       u:"https://www.xiaohongshu.com/search_result?keyword=珠圆玉润妆完全是淡颜天菜&type=51"},
+      {r:8,t:"碎钻美甲指尖藏着细碎星光",v:"652万",g:"💅 美甲",s:"把星空藏在指尖——极细闪粉和碎钻打造「指尖星河」，举手投足都是细碎的光。",
+       u:"https://www.xiaohongshu.com/search_result?keyword=碎钻美甲指尖藏着细碎星光&type=51"},
+      {r:9,t:"我来当旅行中的颜色猎手",v:"642.3万",g:"🎨 生活",s:"把旅行变成颜色收集游戏！在每个城市寻找它的代表色——你的城市是什么颜色？",
+       u:"https://www.xiaohongshu.com/search_result?keyword=我来当旅行中的颜色猎手&type=51"}
+    ]
+  },
+  // Tab 1: 涨粉账号 (千瓜涨粉榜)
+  {
+    title:"📈 一周涨粉最快", stat:["10 个账号","最高 127万","增粉 4-28%","体育·媒体·教育"],
+    rec:{i:"📈",l:"本周涨粉王",t:"#1 小红书体育 · +127.5万粉",d:"世界杯热度带动，体育类账号迎来爆发式增长。官方号+体育名人霸榜，涨粉率高达28.71%。",
+        v:"127.51万",u:"https://www.qian-gua.com/rank/fans"},
+    cards:[
+      {r:1,t:"小红书体育",v:"+127.5万",g:"📺 官方号",s:"涨粉率28.71% · 总粉444万 · 世界杯热度带动官方号暴涨",
+       u:"https://www.qian-gua.com/rank/fans",m:["官方号","体育","金冠薯"]},
+      {r:2,t:"央视频",v:"+2.96万",g:"📺 企业号",s:"涨粉率4.49% · 总粉66万 · 央视融媒体矩阵持续吸粉",
+       u:"https://www.qian-gua.com/rank/fans",m:["企业号","媒体","高权重"]},
+      {r:3,t:"央视网",v:"+1.82万",g:"📺 企业号",s:"涨粉率1.05% · 总粉174万 · 权威媒体账号稳定增长",
+       u:"https://www.qian-gua.com/rank/fans",m:["媒体","官方","新闻"]},
+      {r:4,t:"po老师（英语版）",v:"+1.77万",g:"📚 教育",s:"涨粉率9.29% · 总粉19万 · 英语教学垂类黑马，内容实用性强",
+       u:"https://www.qian-gua.com/rank/fans",m:["腰部达人","教育","英语"]},
+      {r:5,t:"范志毅",v:"+1.68万",g:"⚽ 体育",s:"涨粉率5.44% · 总粉31万 · 足球名人效应+世界杯话题加持",
+       u:"https://www.qian-gua.com/rank/fans",m:["明星","体育","足球"]},
+      {r:6,t:"小红书足球",v:"+1.57万",g:"📺 官方号",s:"涨粉率20.88% · 总粉7.5万 · 世界杯期间足球官方号增速惊人",
+       u:"https://www.qian-gua.com/rank/fans",m:["官方号","体育","高增长"]},
+      {r:7,t:"小胡同学呀",v:"+1.55万",g:"🎬 娱乐",s:"涨粉率0.49% · 总粉318万 · 头部娱乐达人持续稳增",
+       u:"https://www.qian-gua.com/rank/fans",m:["头部达人","娱乐","金冠薯"]},
+      {r:8,t:"杨超越",v:"+1.51万",g:"🎤 明星",s:"涨粉率0.81% · 总粉186万 · 明星效应+近期综艺热度",
+       u:"https://www.qian-gua.com/rank/fans",m:["明星","文化薯","娱乐"]},
+      {r:9,t:"薯队长",v:"+1.48万",g:"📢 官方号",s:"涨粉率0.18% · 总粉823万 · 平台官方号稳定霸榜",
+       u:"https://www.qian-gua.com/rank/fans",m:["官方号","平台","金冠薯"]},
+      {r:10,t:"姜乘澜",v:"+1.42万",g:"🎨 时尚",s:"涨粉率0.42% · 总粉336万 · 时尚领域头部达人",
+       u:"https://www.qian-gua.com/rank/fans",m:["头部达人","时尚","高粉"]}
+    ]
+  },
+  // Tab 2: 热门笔记 (千瓜行业榜-赞藏增量最高)
+  {
+    title:"💥 近一周热门贴", stat:["10 个账号","最高 18万赞藏","7个金冠薯","娱乐·媒体·国风"],
+    rec:{i:"💥",l:"本周热度王",t:"#1 会火 · 周增18.3万赞藏",d:"娱乐资讯类账号持续高热度，头部达人「会火」凭借独家娱乐内容蝉联行业榜首。",
+        v:"18.34万",u:"https://www.qian-gua.com/rank/category"},
+    cards:[
+      {r:1,t:"会火",v:"+18.3万",g:"🔥 娱乐资讯",s:"千瓜指数973.59 · 总粉71万 · 赞藏总量1.4亿 · 娱乐资讯头部账号",
+       u:"https://www.qian-gua.com/rank/category",m:["头部达人","金冠薯","娱乐"]},
+      {r:2,t:"哈尔滨日报冰城+",v:"+17.7万",g:"📰 地方媒体",s:"千瓜指数960.62 · 总粉69万 · 赞藏总量1.3亿 · 地方媒体号内容出圈",
+       u:"https://www.qian-gua.com/rank/category",m:["企业号","金冠薯","媒体"]},
+      {r:3,t:"我的偶像巨顽皮",v:"+17.2万",g:"🎬 娱乐",s:"千瓜指数977.35 · 总粉105万 · 赞藏总量2.2亿 · 头部娱乐号持续爆发",
+       u:"https://www.qian-gua.com/rank/category",m:["头部达人","金冠薯","娱乐"]},
+      {r:4,t:"腾讯视频",v:"+16.9万",g:"📺 视频平台",s:"总粉95万 · 赞藏9093万 · 腾讯视频官方号内容分发强势",
+       u:"https://www.qian-gua.com/rank/category",m:["企业号","媒体","视频"]},
+      {r:5,t:"耶耶不吃娱",v:"+16.7万",g:"🎬 娱乐",s:"千瓜指数950.24 · 总粉36万 · 赞藏447万 · 腰部娱乐达人力争上游",
+       u:"https://www.qian-gua.com/rank/category",m:["腰部达人","娱乐","新偶文化"]},
+      {r:6,t:"星耀国风",v:"+15.8万",g:"🏮 国风文化",s:"千瓜指数960.89 · 总粉31万 · 赞藏8310万 · 国风赛道持续升温",
+       u:"https://www.qian-gua.com/rank/category",m:["企业号","金冠薯","国风"]},
+      {r:7,t:"元气梨梨",v:"+15.7万",g:"🌸 生活",s:"千瓜指数965.45 · 总粉8万 · 赞藏1569万 · 小体量高互动率典范",
+       u:"https://www.qian-gua.com/rank/category",m:["腰部达人","生活","高互动"]},
+      {r:8,t:"一只速报君",v:"+15.4万",g:"📰 资讯",s:"千瓜指数967.88 · 总粉12万 · 赞藏1480万 · 资讯类内容精准触达",
+       u:"https://www.qian-gua.com/rank/category",m:["腰部达人","资讯","思空"]},
+      {r:9,t:"潇湘晨报",v:"+15.3万",g:"📰 媒体",s:"千瓜指数969.65 · 总粉31万 · 赞藏1572万 · 地方媒体持续产出爆款",
+       u:"https://www.qian-gua.com/rank/category",m:["企业号","困困薯","媒体"]},
+      {r:10,t:"新闻晨报",v:"+13.7万",g:"📰 媒体",s:"千瓜指数950.97 · 总粉35万 · 赞藏3656万 · 传统媒体新媒体转型标杆",
+       u:"https://www.qian-gua.com/rank/category",m:["企业号","金冠薯","新闻"]}
+    ]
+  }
+];
 
 const T={
-1:{t:"今天刷什么",d:"小红书今日热门 · 一句话看懂一个热点",l:"9 条",c:"#dc2626"},
-2:{t:"今天也元气满满",d:"温暖珊瑚色 · 每一天都充满能量 🌸",l:"9 条",c:"#f06292"},
-3:{t:"在夏天的风里刷小红书",d:"薄荷味的热门推荐 🍃",l:"9 条",c:"#00b894"},
-4:{t:"今天刷什么",d:"护眼模式 · 温柔阅读体验 🌿",l:"9 条",c:"#5b8c5a"}
+1:{c:"#dc2626"},2:{c:"#f06292"},3:{c:"#00b894"},4:{c:"#5b8c5a"}
+};
+
+let curTab=0;
+
+function renderTab(idx){
+  const d=DATA[idx];
+  // Hero
+  document.getElementById('heroTitle').innerHTML=`<em>${d.title}</em>`;
+  // Stats
+  document.getElementById('heroMeta').innerHTML=d.stat.map(s=>`<span>${s}</span>`).join('');
+  // Rec
+  const r=d.rec;
+  document.getElementById('mainContent').innerHTML=
+    `<div class="stats">${[d.stat[0],d.stat[1],d.stat[2],d.stat[3]].map((s,i)=>{
+      const cs=['#dc2626','#2563eb','#16a34a','#7c3aed'];
+      return `<div class="st-c"><div class="n" style="color:${cs[i]}">${s.split(' ')[0]}</div><div class="l">${s.replace(/^[^\s]+\s/,'')}</div></div>`
+    }).join('')}</div>
+    <div class="rec"><div class="rec-i">${r.i}</div><div class="rec-b"><div class="rec-l">${r.l}</div><div class="rec-t">${r.t}</div><div class="rec-d">${r.d}</div></div><a href="${r.u}" target="_blank" rel="noopener">去看看 · ${r.v}</a></div>
+    <div class="sh"><h2>📋 全部榜单</h2><span>${d.cards.length} 条</span></div>
+    <div class="grid">${d.cards.map(p=>`
+    <a class="card" href="${p.u}" target="_blank" rel="noopener noreferrer">
+    <div class="tp"><div class="rk">${p.r}</div><span class="tg">${p.g}</span></div>
+    <div class="ti">${p.t}</div>
+    <div class="vw">👁️ <b>${p.v}</b></div>
+    <div class="su">${p.s}</div>
+    ${p.m?`<div class="meta-tags">${p.m.map(t=>`<span>${t}</span>`).join('')}</div>`:''}
+    <div class="go">查看详情 →</div></a>`).join('')}</div>`;
+  // Update tabs
+  document.querySelectorAll('.tab').forEach((el,i)=>el.classList.toggle('active',i===idx));
 }
 
-function init(){
-const n=new Date();document.getElementById('todayTag').textContent=`${n.getMonth()+1}.${n.getDate()}`
-document.getElementById('topPicks').innerHTML=P.slice(0,3).map(p=>`<a href="${p.u}" target="_blank" rel="noopener">#${p.r} ${p.t.slice(0,16)}</a>`).join('')
-const ts=[...new Set(P.map(p=>p.g))];const tv=P.reduce((s,p)=>s+parseFloat(p.v),0)
-document.getElementById('statsRow').innerHTML=
-`<div class="st-c"><div class="n" style="color:#dc2626">${P.length}</div><div class="l">🔥 今日热门</div></div>`+
-`<div class="st-c"><div class="n" style="color:#2563eb">${ts.length}</div><div class="l">🏷️ 覆盖领域</div></div>`+
-`<div class="st-c"><div class="n" style="color:#16a34a">${(tv/10000).toFixed(1)}亿</div><div class="l">👁️ 总浏览量</div></div>`+
-`<div class="st-c"><div class="n" style="color:#7c3aed">🏔️📸🍜</div><div class="l" style="font-size:11px">旅行·摄影·美食·美妆</div></div>`
-document.getElementById('hHot').textContent=P.length
-document.getElementById('hTags').textContent=ts.length
-document.getElementById('hViews').textContent=(tv/10000).toFixed(1)
-const tp=P[0];document.getElementById('recSection').innerHTML=
-`<div class="rec"><div class="rec-i">⭐</div><div class="rec-b"><div class="rec-l">今日重点推荐</div><div class="rec-t">#${tp.r} ${tp.t}</div><div class="rec-d">${tp.s}</div></div><a href="${tp.u}" target="_blank" rel="noopener">去看看 · ${tp.v}</a></div>`
-renderCards()}
-
-function renderCards(){
-document.getElementById('cardGrid').innerHTML=P.map(p=>`
-<a class="card" href="${p.u}" target="_blank" rel="noopener noreferrer">
-<div class="top"><div class="rk">${p.r}</div><span class="tg">${p.g}</span></div>
-<div class="ti">${p.t}</div>
-<div class="vw">👁️ <b>${p.v}</b> 浏览</div>
-<div class="su">${p.s}</div>
-<div class="go">去小红书看看 →</div></a>`).join('')}
+function switchTab(idx){
+  curTab=idx;
+  setTheme(+document.getElementById('themeSelect').value);
+  renderTab(idx);
+}
 
 function setTheme(n){
-const t=T[n]
-document.getElementById('heroTitle').textContent=t.t
-document.getElementById('heroDesc').textContent=t.d
-document.getElementById('themeLabel').textContent=t.l
-document.getElementById('themeSelect').value=n
-document.body.style.background=['#fafafa','#fef1ec','#f0fdfa','#f0f5ec'][n-1]
-document.documentElement.style.setProperty('--line',['#e5e5e5','#f5d5ca','#e5e5e5','#dce5d6'][n-1])
-document.documentElement.style.setProperty('--accent',t.c)
-document.documentElement.style.setProperty('--ink',['#0a0a0a','#0a0a0a','#0a0a0a','#3a3a3a'][n-1])
-document.documentElement.style.setProperty('--mute',['#737373','#737373','#737373','#6b8f6a'][n-1])
-const ri=document.querySelector('.rec-i')
-if(ri)ri.textContent=['⭐','💖','🍃','🌿'][n-1]
-// Update stat colors for 护眼 mode
-const cols=[t.c,'#2563eb','#16a34a','#7c3aed']
-const soft=['#5b8c5a','#6b8f6a','#5b8c5a','#6b8f6a']
-const sc=n===4?soft:cols
-document.querySelectorAll('.st-c .n').forEach((el,i)=>{
-if(i<4)el.style.color=sc[i]})}
+  const t=T[n];
+  document.getElementById('themeSelect').value=n;
+  document.body.style.background=['#fafafa','#fef1ec','#f0fdfa','#f0f5ec'][n-1];
+  document.documentElement.style.setProperty('--line',['#e5e5e5','#f5d5ca','#e5e5e5','#dce5d6'][n-1]);
+  document.documentElement.style.setProperty('--accent',t.c);
+  document.documentElement.style.setProperty('--ink',['#0a0a0a','#0a0a0a','#0a0a0a','#3a3a3a'][n-1]);
+  document.documentElement.style.setProperty('--mute',['#737373','#737373','#737373','#6b8f6a'][n-1]);
+  renderTab(curTab);
+}
 
-init();setTheme(1)
+setTheme(1);
 </script>
 </body>
 </html>
