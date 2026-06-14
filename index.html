@@ -75,9 +75,9 @@
   .rc a:hover{transform:scale(1.05);}
 
   /* ===== Topic Images ===== */
-  .ti{width:100%;height:190px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:transform .4s;}
-  .ti .emo{font-size:52px;position:relative;z-index:1;filter:drop-shadow(0 4px 8px rgba(0,0,0,.08));}
-  .card:hover .ti{transform:scale(1.03);}
+  .ti{width:100%;height:190px;overflow:hidden;position:relative;background:var(--card);}
+  .ti img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+  .card:hover .ti img{transform:scale(1.06);}
   .ti-rk{position:absolute;top:10px;left:10px;z-index:2;width:28px;height:28px;border-radius:50%;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
   .ti-tg{position:absolute;bottom:10px;left:10px;z-index:2;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);color:#fff;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:600;}
 
@@ -134,43 +134,56 @@
 <footer>📱 点击卡片直达小红书搜索 · Made with ❤️</footer>
 
 <script>
+// ===== 真实小红书封面图（来自探索页实时数据） =====
+const xhsCovers = [
+  "https://sns-webpic-qc.xhscdn.com/202606141609/5f4872af53cf6e8610f0e300",
+  "https://sns-webpic-qc.xhscdn.com/202606141609/06b46b1c0ba40ddac0feecf8",
+  "https://sns-webpic-qc.xhscdn.com/202606141609/d3ff34133a54eea1e1e13d0d",
+  "https://sns-webpic-qc.xhscdn.com/202606141609/f65662340b4cade182cd4c7f",
+  "https://sns-webpic-qc.xhscdn.com/202606141609/86f5d77ca4f5966b6d83cd07",
+  "https://sns-webpic-qc.xhscdn.com/202606141609/4963afba46cbba5d3edb96f5",
+  "https://sns-webpic-qc.xhscdn.com/202606141609/0d3227f9892a301dafdf445e",
+  "https://sns-webpic-qc.xhscdn.com/202606141609/6c43924ffa00ba4510a0d8f1",
+  "https://sns-webpic-qc.xhscdn.com/202606141609/8a2e0b5657611262c79b9100",
+];
+
 const posts = [
   {r:1,t:"用万能旅行拍照姿势美美出片",v:"918.6万",g:"🌍 旅行",
    s:"万能旅行拍照姿势公式，转个身低个头氛围感拉满——每一张都是朋友圈封面。",
    u:"https://www.xiaohongshu.com/search_result?keyword=用万能旅行拍照姿势美美出片&type=51",
-   ic:"🏔️",c:"linear-gradient(135deg,#43e97b,#38f9d7)"},
+   img:xhsCovers[0],ic:"🏔️"},
   {r:2,t:"耗时三年拍下古诗词里的中国",v:"907万",g:"🏮 文化",
    s:"摄影师走遍大江南北，把古诗词意境变成照片——「落霞与孤鹜齐飞」是真实存在的。",
    u:"https://www.xiaohongshu.com/search_result?keyword=耗时三年拍下古诗词里的中国&type=51",
-   ic:"🏮",c:"linear-gradient(135deg,#fa709a,#fee140)"},
+   img:xhsCovers[1],ic:"🏮"},
   {r:3,t:"我拍到了海鸥雨",v:"887.5万",g:"📸 摄影",
    s:"数百只海鸥同时振翅，在海面形成一场「海鸥雨」——大自然的随机艺术永远比精心设计更震撼。",
    u:"https://www.xiaohongshu.com/search_result?keyword=我拍到了海鸥雨&type=51",
-   ic:"📸",c:"linear-gradient(135deg,#a18cd1,#fbc2eb)"},
+   img:xhsCovers[2],ic:"📸"},
   {r:4,t:"超日常美食教程速来get",v:"867.6万",g:"🍜 美食",
    s:"10分钟搞定有仪式感的一餐！不想点外卖又懒得做大菜？厨房小白也能秒变大厨。",
    u:"https://www.xiaohongshu.com/search_result?keyword=超日常美食教程速来get&type=51",
-   ic:"🍜",c:"linear-gradient(135deg,#f6d365,#fda085)"},
+   img:xhsCovers[3],ic:"🍜"},
   {r:5,t:"定格这一刻的日照金山",v:"857万",g:"🏔 旅行",
    s:"梅里雪山的日照金山被完美定格——高反也值得，这是大自然给早起的人最大的奖赏。",
    u:"https://www.xiaohongshu.com/search_result?keyword=定格这一刻的日照金山&type=51",
-   ic:"🏔️",c:"linear-gradient(135deg,#667eea,#764ba2)"},
+   img:xhsCovers[4],ic:"🏔️"},
   {r:6,t:"拍到了洱海的丁达尔效应",v:"695.5万",g:"📸 摄影",
    s:"阳光穿过云层洒向洱海形成完美光束——不是滤镜，是大自然自己的光影魔法。",
    u:"https://www.xiaohongshu.com/search_result?keyword=拍到了洱海的丁达尔效应&type=51",
-   ic:"🌅",c:"linear-gradient(135deg,#4facfe,#00f2fe)"},
+   img:xhsCovers[5],ic:"🌅"},
   {r:7,t:"珠圆玉润妆完全是淡颜天菜",v:"684.7万",g:"💄 美妆",
    s:"淡颜系本命妆容！光泽感取代浓墨重彩，温柔又高级——越看越耐看。",
    u:"https://www.xiaohongshu.com/search_result?keyword=珠圆玉润妆完全是淡颜天菜&type=51",
-   ic:"💄",c:"linear-gradient(135deg,#f093fb,#f5576c)"},
+   img:xhsCovers[6],ic:"💄"},
   {r:8,t:"碎钻美甲指尖藏着细碎星光",v:"652万",g:"💅 美甲",
    s:"把星空藏在指尖——极细闪粉和碎钻打造「指尖星河」，举手投足都是细碎的光。",
    u:"https://www.xiaohongshu.com/search_result?keyword=碎钻美甲指尖藏着细碎星光&type=51",
-   ic:"💅",c:"linear-gradient(135deg,#b224ef,#7579ff)"},
+   img:xhsCovers[7],ic:"💅"},
   {r:9,t:"我来当旅行中的颜色猎手",v:"642.3万",g:"🎨 生活",
    s:"把旅行变成颜色收集游戏！在每个城市寻找它的代表色——你的城市是什么颜色？",
    u:"https://www.xiaohongshu.com/search_result?keyword=我来当旅行中的颜色猎手&type=51",
-   ic:"🎨",c:"linear-gradient(135deg,#fc5c7d,#6a82fb)"},
+   img:xhsCovers[8],ic:"🎨"},
 ];
 
 const themes = {
@@ -200,7 +213,7 @@ function render(){
 function renderCards(){
   document.getElementById('cardGrid').innerHTML=posts.map(p=>
     `<a class="card" href="${p.u}" target="_blank" rel="noopener noreferrer">
-      <div class="ti" style="background:${p.c}"><span class="emo">${p.ic}</span>
+      <div class="ti"><img src="${p.img}" alt="${p.t}" loading="lazy">
         <div class="ti-rk">${p.r}</div><div class="ti-tg">${p.g}</div>
       </div>
       <div class="card-b">
