@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小红书热门趋势 · 实时榜单</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap');
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#0d0d0d;
+    --surface:#1a1a1a;
+    --surface2:#242424;
+    --border:#2a2a2a;
+    --text:#f0f0f0;
+    --text2:#999;
+    --accent:#ff2442;
+    --accent2:#ff6b81;
+    --gradient:linear-gradient(135deg,#ff2442,#ff6b81,#ff9a76);
+    --green:#00c853;
+    --orange:#ff9100;
+    --blue:#448aff;
+  }
+  body{
+    font-family:'Inter','Noto Sans SC',-apple-system,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    min-height:100vh;
+  }
+  .container{max-width:1100px;margin:0 auto;padding:0 24px}
+
+  /* Header */
+  header{
+    padding:48px 0 32px;
+    border-bottom:1px solid var(--border);
+    margin-bottom:40px;
+  }
+  .logo{
+    display:flex;align-items:center;gap:12px;
+    font-size:28px;font-weight:800;
+    background:var(--gradient);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+  }
+  .logo svg{width:32px;height:32px}
+  .subtitle{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-top:4px;color:var(--text2);font-size:14px;
+  }
+  .update-badge{
+    display:inline-flex;align-items:center;gap:6px;
+    background:var(--surface2);padding:4px 12px;border-radius:20px;
+    font-size:12px;color:var(--green);
+  }
+  .update-badge .dot{
+    width:6px;height:6px;border-radius:50%;background:var(--green);
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+  /* Hot Topics Grid */
+  .section-title{
+    font-size:20px;font-weight:700;margin-bottom:20px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .hot-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+    gap:16px;margin-bottom:48px;
+  }
+  .hot-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:20px;
+    transition:all .2s;
+    position:relative;
+    overflow:hidden;
+  }
+  .hot-card:hover{
+    border-color:var(--accent);
+    transform:translateY(-2px);
+    box-shadow:0 8px 32px rgba(255,36,66,.15);
+  }
+  .hot-card .rank{
+    position:absolute;top:12px;right:16px;
+    font-size:40px;font-weight:800;
+    background:var(--gradient);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    opacity:.15;
+    line-height:1;
+  }
+  .hot-card .title{
+    font-size:16px;font-weight:600;
+    margin-bottom:8px;
+    padding-right:30px;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  }
+  .hot-card .views{
+    font-size:13px;color:var(--accent2);font-weight:600;
+    margin-bottom:8px;
+  }
+  .hot-card .summary{
+    font-size:13px;color:var(--text2);
+    line-height:1.5;
+  }
+  .hot-card .tag{
+    display:inline-block;
+    background:rgba(255,36,66,.1);
+    color:var(--accent);
+    font-size:11px;font-weight:600;
+    padding:2px 8px;border-radius:4px;
+    margin-bottom:10px;
+  }
+
+  /* Trends Section */
+  .trends-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+    gap:12px;margin-bottom:48px;
+  }
+  .trend-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:16px;
+    transition:all .2s;
+    cursor:default;
+  }
+  .trend-card:hover{border-color:var(--blue);}
+  .trend-card .word{
+    font-size:18px;font-weight:700;
+    margin-bottom:4px;
+  }
+  .trend-card .desc{
+    font-size:13px;color:var(--text2);
+    line-height:1.4;
+  }
+  .trend-card .hot-label{
+    display:inline-block;
+    font-size:11px;font-weight:600;
+    padding:2px 8px;border-radius:4px;
+    margin-bottom:8px;
+  }
+  .hot-label.emotion{background:rgba(255,145,0,.12);color:var(--orange);}
+  .hot-label.awake{background:rgba(68,138,255,.12);color:var(--blue);}
+  .hot-label.beauty{background:rgba(255,36,66,.1);color:var(--accent2);}
+  .hot-label.exp{background:rgba(0,200,83,.12);color:var(--green);}
+
+  /* Footer */
+  footer{
+    border-top:1px solid var(--border);
+    padding:24px 0 48px;
+    text-align:center;
+    color:var(--text2);
+    font-size:13px;
+  }
+  footer a{color:var(--accent);text-decoration:none;}
+
+  @media(max-width:640px){
+    header{padding:32px 0 24px;margin-bottom:24px;}
+    .logo{font-size:22px;}
+    .hot-grid{grid-template-columns:1fr;}
+    .trends-grid{grid-template-columns:repeat(2,1fr);}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      小红书热门趋势
+    </div>
+    <div class="subtitle">
+      <span>实时热搜榜单 · 一句话看懂今日热点</span>
+      <span class="update-badge"><span class="dot"></span> 实时更新</span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- 🔥 实时热搜 -->
+  <div class="section-title">🔥 实时热搜榜单</div>
+  <div class="hot-grid" id="hotGrid"></div>
+
+  <!-- 📊 2026 年度趋势热词 -->
+  <div class="section-title">📊 2026 年度趋势热词</div>
+  <div class="trends-grid" id="trendsGrid"></div>
+
+</main>
+
+<footer>
+  <div class="container">
+    数据来源：<a href="https://www.46.la/tool/xiaohongshu-hot" target="_blank">四六啦工 · 小红书热搜</a> ·
+    趋势分析：<a href="https://www.163.com/dy/article/KQUHNKA30531B128.html" target="_blank">千瓜数据 2026十大热词</a><br>
+    Made with ❤️ by Hermes Agent · 数据仅供学习参考
+  </div>
+</footer>
+
+<script>
+// ============================================================
+// 🔥 实时热搜数据（来自 46.la · 2026-06-14）
+// ============================================================
+const hotData = [
+  { rank:1, title:"用万能旅行拍照姿势美美出片", views:"918.6万", tag:"🌍 旅行",
+    summary:"不用再比剪刀手了！万能旅行拍照姿势公式，让你在每一个风景里都能美美出片——转个身、低个头，氛围感拉满。" },
+  { rank:2, title:"耗时三年拍下古诗词里的中国", views:"907万", tag:"🏮 文化",
+    summary:"摄影师用三年时间走遍大江南北，把古诗词中的意境变成照片——原来‘落霞与孤鹜齐飞’是真实存在的画面。" },
+  { rank:3, title:"我拍到了海鸥雨", views:"887.5万", tag:"📸 摄影",
+    summary:"海边的一场‘海鸥雨’让人瞬间置身电影镜头，抓拍到了数百只海鸥同时振翅的震撼一刻——大自然从不让人失望。" },
+  { rank:4, title:"超日常美食教程速来get", views:"867.6万", tag:"🍜 美食",
+    summary:"不想点外卖又懒得做大菜？这些超简单的日常美食教程，10分钟搞定一顿有仪式感的饭——厨房小白也能秒变大厨。" },
+  { rank:5, title:"定格这一刻的日照金山", views:"857万", tag:"🏔 旅行",
+    summary:"梅里雪山的日照金山被完美定格，那一刻金色的光芒从山顶倾泻而下——高反也值得，这是大自然给早起的人最大的奖赏。" },
+  { rank:6, title:"拍到了洱海的丁达尔效应", views:"695.5万", tag:"📸 摄影",
+    summary:"阳光穿过云层洒向洱海，形成了完美的丁达尔效应光束——网友感叹：这不是滤镜，这是大自然自己的光影魔法。" },
+  { rank:7, title:"珠圆玉润妆完全是淡颜天菜", views:"684.7万", tag:"💄 美妆",
+    summary:"淡颜系女生的本命妆容来了！珠圆玉润妆用光泽感取代浓墨重彩，让五官看起来温柔又高级——越看越耐看。" },
+  { rank:8, title:"碎钻美甲指尖藏着细碎星光", views:"652万", tag:"💅 美甲",
+    summary:"把星空藏在指尖——碎钻美甲用极细的闪粉和碎钻打造出‘指尖星河’的效果，举手投足间都是细碎的光。" },
+  { rank:9, title:"我来当旅行中的颜色猎手", views:"642.3万", tag:"🎨 生活",
+    summary:"把旅行变成一场颜色收集游戏——在每一个城市寻找它的代表色，用镜头当调色盘，记录下属于这座城市的色卡。" },
+  { rank:10, title:"拍到了洱海的丁达尔效应", views:"695.5万", tag:"📸 摄影",
+    summary:"阳光穿过云层洒向洱海，形成了完美的丁达尔效应光束——网友感叹：这不是滤镜，这是大自然自己的光影魔法。" },
+];
+
+// ============================================================
+// 📊 2026 年度趋势热词
+// ============================================================
+const trendsData = [
+  { word:"抽象力", label:"情绪宣泄", cat:"emotion",
+    desc:"用荒诞、玩梗、自嘲消解生活压力，『发疯文学』成为年轻人的社交货币。" },
+  { word:"痛文化", label:"情绪宣泄", cat:"emotion",
+    desc:"二次元破圈进入日常生活，COS、谷子、同人创作成为Z世代的‘精神食粮'。" },
+  { word:"主体性", label:"自我觉醒", cat:"awake",
+    desc:"女性与年轻群体意识觉醒，从『上桌吃饭』到『我爱你老己』，做人生的主角。" },
+  { word:"活人感", label:"自我觉醒", cat:"awake",
+    desc:"厌倦虚假精致，追求真实生命力——气血充盈、动态鲜活的生活状态才是真。" },
+  { word:"边界感", label:"自我觉醒", cat:"awake",
+    desc:"守护个人空间成为刚需，『丝瓜汤拒绝法』、独处充电，不被越界是最高级的体面。" },
+  { word:"反精致", label:"审美变革", cat:"beauty",
+    desc:"反抗标准化审美，拥抱瑕疵与真实——『丑东西』成为新的审美自由宣言。" },
+  { word:"AI人格", label:"审美变革", cat:"beauty",
+    desc:"AI从冰冷工具进化为『生活搭子』——陪你聊天、监督自习、甚至教你谈恋爱。" },
+  { word:"柔软力", label:"审美变革", cat:"beauty",
+    desc:"外柔内韧的生活智慧，不是脆弱，而是有力量的温柔——松弛而有底气的活法。" },
+  { word:"代入感", label:"体验升级", cat:"exp",
+    desc:"年轻人的『精神出游』——第一视角、沉浸式内容让你身临其境，足不出户环游世界。" },
+  { word:"文化力", label:"体验升级", cat:"exp",
+    desc:"轻量型文化消费兴起——小票文学、文创周边、美术馆联名，精神价值消费成新趋势。" },
+];
+
+// ============================================================
+// Render
+// ============================================================
+function renderHot(){
+  const grid = document.getElementById('hotGrid');
+  grid.innerHTML = hotData.map(item => `
+    <div class="hot-card">
+      <span class="rank">#${item.rank}</span>
+      <span class="tag">${item.tag}</span>
+      <div class="title">${item.title}</div>
+      <div class="views">👁️ ${item.views} 浏览</div>
+      <div class="summary">💡 ${item.summary}</div>
+    </div>
+  `).join('');
+}
+
+function renderTrends(){
+  const grid = document.getElementById('trendsGrid');
+  grid.innerHTML = trendsData.map(item => `
+    <div class="trend-card">
+      <span class="hot-label ${item.cat}">${item.label}</span>
+      <div class="word">${item.word}</div>
+      <div class="desc">${item.desc}</div>
+    </div>
+  `).join('');
+}
+
+renderHot();
+renderTrends();
+</script>
+</body>
+</html>
