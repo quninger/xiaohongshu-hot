@@ -106,6 +106,7 @@ footer{padding:24px 0 40px;text-align:center;font-size:12px;color:var(--mute)}
         <option value="1">☀️ 明亮</option>
         <option value="2">🌸 元气</option>
         <option value="3">🌊 清新</option>
+        <option value="4">🌿 护眼</option>
       </select>
     </div>
   </div>
@@ -139,7 +140,8 @@ const P=[
 const T={
 1:{t:"今天刷什么",d:"小红书今日热门 · 一句话看懂一个热点",l:"9 条",c:"#dc2626"},
 2:{t:"今天也元气满满",d:"粉粉嫩嫩的热门合集 💖",l:"9 条",c:"#e84393"},
-3:{t:"在夏天的风里刷小红书",d:"薄荷味的热门推荐 🍃",l:"9 条",c:"#00b894"}
+3:{t:"在夏天的风里刷小红书",d:"薄荷味的热门推荐 🍃",l:"9 条",c:"#00b894"},
+4:{t:"今天刷什么",d:"护眼模式 · 温柔阅读体验 🌿",l:"9 条",c:"#5b8c5a"}
 }
 
 function init(){
@@ -173,10 +175,18 @@ document.getElementById('heroTitle').textContent=t.t
 document.getElementById('heroDesc').textContent=t.d
 document.getElementById('themeLabel').textContent=t.l
 document.getElementById('themeSelect').value=n
-document.body.style.background=['#fafafa','#fef2f4','#f0fdfa'][n-1]
+document.body.style.background=['#fafafa','#fef2f4','#f0fdfa','#f0f5ec'][n-1]
 document.documentElement.style.setProperty('--accent',t.c)
+document.documentElement.style.setProperty('--ink',['#0a0a0a','#0a0a0a','#0a0a0a','#3a3a3a'][n-1])
+document.documentElement.style.setProperty('--mute',['#737373','#737373','#737373','#6b8f6a'][n-1])
 const ri=document.querySelector('.rec-i')
-if(ri)ri.textContent=['⭐','💖','🍃'][n-1]}
+if(ri)ri.textContent=['⭐','💖','🍃','🌿'][n-1]
+// Update stat colors for 护眼 mode
+const cols=[t.c,'#2563eb','#16a34a','#7c3aed']
+const soft=['#5b8c5a','#6b8f6a','#5b8c5a','#6b8f6a']
+const sc=n===4?soft:cols
+document.querySelectorAll('.st-c .n').forEach((el,i)=>{
+if(i<4)el.style.color=sc[i]})}
 
 init();setTheme(1)
 </script>
