@@ -7,249 +7,227 @@
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{
-    --bg1:#fff5e6;--card1:#fff;--accent1:#ff6b35;--grad1:linear-gradient(135deg,#ff6b35,#ffb347,#ffd54f);
-    --text1:#2d1b00;--text2-1:#8b6f47;--shadow1:0 8px 32px rgba(255,107,53,.15);
-    --bg2:#fef0f5;--card2:#fff;--accent2:#e84393;--grad2:linear-gradient(135deg,#e84393,#fd79a8,#e17055);
-    --text2:#2d0020;--text2-2:#a0607a;--shadow2:0 8px 32px rgba(232,67,147,.15);
-    --bg3:#e8f8f5;--card3:#fff;--accent3:#00b894;--grad3:linear-gradient(135deg,#00b894,#00cec9,#0984e3);
-    --text3:#001a14;--text2-3:#558b7a;--shadow3:0 8px 32px rgba(0,184,148,.15);
-    --bg:var(--bg1);--card:var(--card1);--accent:var(--accent1);
-    --grad:var(--grad1);--text:var(--text1);--text2:var(--text2-1);--shadow:var(--shadow1);
+    --bg:#fff5e6;--card:#fff;--accent:#ff6b35;--grad:linear-gradient(135deg,#ff6b35,#ffb347,#ffd54f);
+    --text:#2d1b00;--t2:#8b6f47;--sh:0 8px 32px rgba(255,107,53,.12);
+    --ti1:"🏆";--ti2:"💖";--ti3:"🍃";
   }
   body{
     font-family:-apple-system,'Noto Sans SC','Segoe UI',sans-serif;
     background:var(--bg);color:var(--text);line-height:1.6;
     transition:background .5s,color .3s;min-height:100vh;
   }
-  .theme-1{--bg:var(--bg1);--card:var(--card1);--accent:var(--accent1);--grad:var(--grad1);--text:var(--text1);--text2:var(--text2-1);--shadow:var(--shadow1);}
-  .theme-2{--bg:var(--bg2);--card:var(--card2);--accent:var(--accent2);--grad:var(--grad2);--text:var(--text2);--text2:var(--text2-2);--shadow:var(--shadow2);}
-  .theme-3{--bg:var(--bg3);--card:var(--card3);--accent:var(--accent3);--grad:var(--grad3);--text:var(--text3);--text2:var(--text2-3);--shadow:var(--shadow3);}
+  .t1{--bg:#fff5e6;--accent:#ff6b35;--grad:linear-gradient(135deg,#ff6b35,#ffb347,#ffd54f);--text:#2d1b00;--t2:#8b6f47;--sh:0 8px 32px rgba(255,107,53,.12);--tb:linear-gradient(135deg,#ff6b35,#ffb347);}
+  .t2{--bg:#fef0f5;--accent:#e84393;--grad:linear-gradient(135deg,#e84393,#fd79a8);--text:#2d0020;--t2:#a0607a;--sh:0 8px 32px rgba(232,67,147,.12);--tb:linear-gradient(135deg,#e84393,#fd79a8);}
+  .t3{--bg:#e8f8f5;--accent:#00b894;--grad:linear-gradient(135deg,#00b894,#00cec9);--text:#001a14;--t2:#558b7a;--sh:0 8px 32px rgba(0,184,148,.12);--tb:linear-gradient(135deg,#00b894,#00cec9);}
 
-  /* ===== Headings ===== */
-  h1{font-size:clamp(24px,4vw,36px);font-weight:800;margin-bottom:6px;}
-  h2{font-size:20px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
-  .grad-text{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-  .sub{color:var(--text2);font-size:14px;margin-bottom:20px;}
+  h1{font-size:clamp(22px,3.5vw,32px);font-weight:800;margin-bottom:4px;}
+  h2{font-size:17px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .gt{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .sub{color:var(--t2);font-size:13px;margin-bottom:16px;}
 
   /* ===== Sticky Top Bar ===== */
-  .top-bar{position:sticky;top:0;z-index:100;background:var(--grad);transition:background .5s;}
-  .top-inner{max-width:1100px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
-  .top-date{color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;gap:8px;}
-  .top-date .tag{background:rgba(255,255,255,.2);padding:2px 10px;border-radius:10px;font-size:11px;}
-  .top-picks{display:flex;gap:8px;flex-wrap:wrap;}
-  .top-pick{background:rgba(255,255,255,.15);padding:4px 12px;border-radius:16px;color:#fff;font-size:12px;font-weight:500;text-decoration:none;transition:.2s;}
-  .top-pick:hover{background:rgba(255,255,255,.3);}
+  .top{position:sticky;top:0;z-index:100;
+    background:var(--tb,var(--grad));transition:background .5s;padding:0;}
+  .top-i{max-width:1100px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  .top-l{color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;gap:8px;}
+  .top-l .tag{background:rgba(255,255,255,.2);padding:1px 10px;border-radius:10px;font-size:11px;}
+  .top-p{display:flex;gap:6px;flex-wrap:wrap;}
+  .top-p a{background:rgba(255,255,255,.15);padding:3px 10px;border-radius:14px;color:#fff;font-size:11px;font-weight:500;text-decoration:none;transition:.2s;}
+  .top-p a:hover{background:rgba(255,255,255,.3);}
 
-  /* ===== Theme Switcher ===== */
-  .switcher{display:flex;justify-content:center;gap:10px;margin:28px 0 8px;}
-  .sw-btn{padding:10px 22px;border:2px solid var(--accent);border-radius:30px;background:transparent;cursor:pointer;font-size:14px;font-weight:600;color:var(--accent);transition:all .3s;font-family:inherit;}
-  .sw-btn.active{background:var(--grad);color:#fff;border-color:transparent;}
-  .sw-btn:hover{transform:translateY(-2px);}
   .container{max-width:1100px;margin:0 auto;padding:0 24px;}
+  .hero{text-align:center;padding:16px 0 20px;}
+  .hero p{color:var(--t2);font-size:13px;}
 
-  /* ===== Hero ===== */
-  .hero{text-align:center;padding:20px 0 28px;}
-  .hero h1.grad-text{font-size:clamp(22px,4vw,34px);}
-  .hero p{color:var(--text2);font-size:14px;}
-
-  /* ===== Stats Row ===== */
-  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:28px;}
-  .stat-card{background:var(--card);border-radius:14px;padding:14px 18px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.04);}
-  .stat-card .num{font-size:24px;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-  .stat-card .lbl{font-size:12px;color:var(--text2);margin-top:2px;}
-
-  /* ===== Recommendation ===== */
-  .rec-card{background:var(--card);border-radius:18px;padding:20px 24px;margin-bottom:28px;box-shadow:0 2px 16px rgba(0,0,0,.04);display:flex;align-items:center;gap:16px;flex-wrap:wrap;border:1px solid rgba(0,0,0,.04);}
-  .rec-icon{width:56px;height:56px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
-  .rec-body{flex:1;min-width:200px;}
-  .rec-label{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px;}
-  .rec-title{font-size:17px;font-weight:700;margin-bottom:4px;}
-  .rec-desc{font-size:13px;color:var(--text2);line-height:1.5;}
-  .rec-btn{display:inline-flex;align-items:center;gap:6px;background:var(--grad);color:#fff !important;padding:10px 22px;border-radius:30px;text-decoration:none;font-weight:600;font-size:13px;flex-shrink:0;transition:.2s;}
-  .rec-btn:hover{transform:scale(1.05);}
-
-  /* ===== Topic Image Wrapper ===== */
-  .topic-img{
-    width:100%;height:200px;display:flex;align-items:center;justify-content:center;
-    font-size:56px;position:relative;overflow:hidden;
-    transition:transform .4s;
+  /* ===== Theme Select ===== */
+  .sel-wrap{display:flex;justify-content:center;align-items:center;gap:12px;margin:18px 0 20px;}
+  .sel-wrap label{font-size:13px;font-weight:600;color:var(--t2);}
+  .sel-wrap select{
+    padding:6px 32px 6px 14px;border:2px solid var(--accent);border-radius:20px;
+    background:var(--card);color:var(--text);font-size:13px;font-weight:600;
+    font-family:inherit;cursor:pointer;outline:none;
+    appearance:none;-webkit-appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23ff6b35' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 12px center;background-size:12px;
+    transition:all .3s;
   }
-  .topic-img::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.03);}
-  .card:hover .topic-img{transform:scale(1.04);}
-  .card:hover .topic-img::after{background:rgba(0,0,0,.06);}
-  .card-rank{
-    position:absolute;top:12px;left:12px;z-index:2;
-    width:30px;height:30px;border-radius:50%;background:var(--grad);color:#fff;
-    display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;
-  }
-  .card-topic-tag{
-    position:absolute;bottom:12px;left:12px;z-index:2;
-    background:rgba(0,0,0,.5);backdrop-filter:blur(6px);
-    color:#fff;padding:3px 10px;border-radius:8px;font-size:11px;font-weight:600;
-  }
+  .t1 select{border-color:#ff6b35;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23ff6b35' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");}
+  .t2 select{border-color:#e84393;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23e84393' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");}
+  .t3 select{border-color:#00b894;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2300b894' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");}
+  .sel-wrap select:hover{box-shadow:0 2px 12px rgba(0,0,0,.08);}
+  .sel-wrap select:focus{box-shadow:0 0 0 3px rgba(255,107,53,.15);}
+  .sel-icon{font-size:20px;transition:transform .3s;}
 
-  /* ===== Card Grid ===== */
-  .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px;margin-bottom:48px;}
-  .card{
-    background:var(--card);border-radius:16px;overflow:hidden;
-    box-shadow:0 2px 12px rgba(0,0,0,.04);transition:all .3s;
-    text-decoration:none !important;color:inherit !important;display:block;
-    cursor:pointer;border:1px solid rgba(0,0,0,.04);
-  }
-  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
-  .card-body{padding:14px 16px 16px;}
-  .card-title{font-size:15px;font-weight:600;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-  .card-views{font-size:13px;color:var(--accent);font-weight:600;margin-bottom:4px;}
-  .card-summary{font-size:13px;color:var(--text2);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-  .card-go{display:inline-block;margin-top:8px;font-size:12px;font-weight:600;color:var(--accent);}
+  /* ===== Stats ===== */
+  .st{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:22px;}
+  .st-c{background:var(--card);border-radius:12px;padding:12px 16px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.03);}
+  .st-c .n{font-size:20px;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .st-c .l{font-size:11px;color:var(--t2);margin-top:1px;}
 
-  /* ===== Footer ===== */
-  footer{text-align:center;padding:28px 0 40px;color:var(--text2);font-size:13px;}
+  /* ===== Recom ===== */
+  .rc{background:var(--card);border-radius:16px;padding:16px 20px;margin-bottom:22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;border:1px solid rgba(0,0,0,.03);}
+  .rc-i{width:48px;height:48px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+  .rc-b{flex:1;min-width:180px;}
+  .rc-l{font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;}
+  .rc-t{font-size:15px;font-weight:700;margin:2px 0;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;}
+  .rc-d{font-size:12px;color:var(--t2);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .rc a{display:inline-flex;align-items:center;gap:6px;background:var(--grad);color:#fff!important;padding:8px 18px;border-radius:24px;text-decoration:none;font-weight:600;font-size:12px;flex-shrink:0;transition:.2s;}
+  .rc a:hover{transform:scale(1.05);}
+
+  /* ===== Topic Images ===== */
+  .ti{width:100%;height:190px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:transform .4s;}
+  .ti .emo{font-size:52px;position:relative;z-index:1;filter:drop-shadow(0 4px 8px rgba(0,0,0,.08));}
+  .card:hover .ti{transform:scale(1.03);}
+  .ti-rk{position:absolute;top:10px;left:10px;z-index:2;width:28px;height:28px;border-radius:50%;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
+  .ti-tg{position:absolute;bottom:10px;left:10px;z-index:2;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);color:#fff;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:600;}
+
+  .cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:40px;}
+  .card{background:var(--card);border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.03);transition:all .3s;text-decoration:none!important;color:inherit!important;display:block;cursor:pointer;border:1px solid rgba(0,0,0,.03);}
+  .card:hover{transform:translateY(-3px);box-shadow:var(--sh);}
+  .card-b{padding:12px 14px 14px;}
+  .card-t{font-size:14px;font-weight:600;margin-bottom:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .card-v{font-size:12px;color:var(--accent);font-weight:600;margin-bottom:3px;}
+  .card-s{font-size:12px;color:var(--t2);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .card-g{display:inline-block;margin-top:6px;font-size:11px;font-weight:600;color:var(--accent);}
+
+  footer{text-align:center;padding:24px 0 36px;color:var(--t2);font-size:12px;}
 
   @media(max-width:640px){
-    .top-inner{flex-direction:column;align-items:flex-start;}
-    .sw-btn{padding:8px 14px;font-size:12px;}
-    .card-grid{grid-template-columns:1fr;}
-    .stats{grid-template-columns:repeat(2,1fr);}
+    .top-i{flex-direction:column;align-items:flex-start;}
+    .st{grid-template-columns:repeat(2,1fr);}
+    .cg{grid-template-columns:1fr;}
+    .rc{flex-direction:column;text-align:center;}
   }
 </style>
 </head>
-<body class="theme-1">
+<body class="t1">
 
-<!-- ===== Sticky Top Bar ===== -->
-<div class="top-bar">
-  <div class="top-inner">
-    <div class="top-date"><span>🔥 今日精选</span><span class="tag" id="todayTag"></span></div>
-    <div class="top-picks" id="topPicks"></div>
+<div class="top">
+  <div class="top-i">
+    <div class="top-l"><span>🔥 今日精选</span><span class="tag" id="todayTag"></span></div>
+    <div class="top-p" id="topPicks"></div>
   </div>
 </div>
 
-<!-- ===== Theme Switcher ===== -->
-<div class="switcher">
-  <button class="sw-btn active" onclick="setTheme(1)">☀️ 明亮活力</button>
-  <button class="sw-btn" onclick="setTheme(2)">🌸 元气满满</button>
-  <button class="sw-btn" onclick="setTheme(3)">🌊 清新治愈</button>
+<!-- ===== Theme Select ===== -->
+<div class="sel-wrap">
+  <label>🎨 切换主题</label>
+  <span class="sel-icon" id="selIcon">🏆</span>
+  <select id="themeSelect" onchange="setTheme(parseInt(this.value))">
+    <option value="1">☀️ 明亮活力</option>
+    <option value="2">🌸 元气满满</option>
+    <option value="3">🌊 清新治愈</option>
+  </select>
 </div>
 
 <div class="container">
-
-  <!-- Hero -->
   <div class="hero">
-    <h1 class="grad-text" id="heroTitle">☀️ 小红书的快乐星球</h1>
+    <h1 class="gt" id="heroTitle">☀️ 小红书的快乐星球</h1>
     <p id="heroDesc">今天大家都在看什么？一份充满阳光的热门指南 ✨</p>
   </div>
-
-  <!-- Stats -->
-  <div class="stats" id="statsRow"></div>
-
-  <!-- Recommended -->
+  <div class="st" id="statsRow"></div>
   <div id="recSection"></div>
-
-  <!-- Cards -->
   <h2>🔥 大家都在刷 <span id="themeLabel">这些</span></h2>
-  <div class="card-grid" id="cardGrid"></div>
+  <div class="cg" id="cardGrid"></div>
 </div>
 
-<footer>📱 点击卡片直达小红书搜索结果 · Made with ❤️</footer>
+<footer>📱 点击卡片直达小红书搜索 · Made with ❤️</footer>
 
 <script>
 const posts = [
-  {r:1, t:"用万能旅行拍照姿势美美出片", v:"918.6万", g:"🌍 旅行",
+  {r:1,t:"用万能旅行拍照姿势美美出片",v:"918.6万",g:"🌍 旅行",
    s:"万能旅行拍照姿势公式，转个身低个头氛围感拉满——每一张都是朋友圈封面。",
    u:"https://www.xiaohongshu.com/search_result?keyword=用万能旅行拍照姿势美美出片&type=51",
-   img:"旅行", c:"linear-gradient(135deg,#43e97b,#38f9d7)"},
-  {r:2, t:"耗时三年拍下古诗词里的中国", v:"907万", g:"🏮 文化",
+   ic:"🏔️",c:"linear-gradient(135deg,#43e97b,#38f9d7)"},
+  {r:2,t:"耗时三年拍下古诗词里的中国",v:"907万",g:"🏮 文化",
    s:"摄影师走遍大江南北，把古诗词意境变成照片——「落霞与孤鹜齐飞」是真实存在的。",
    u:"https://www.xiaohongshu.com/search_result?keyword=耗时三年拍下古诗词里的中国&type=51",
-   img:"文化", c:"linear-gradient(135deg,#fa709a,#fee140)"},
-  {r:3, t:"我拍到了海鸥雨", v:"887.5万", g:"📸 摄影",
+   ic:"🏮",c:"linear-gradient(135deg,#fa709a,#fee140)"},
+  {r:3,t:"我拍到了海鸥雨",v:"887.5万",g:"📸 摄影",
    s:"数百只海鸥同时振翅，在海面形成一场「海鸥雨」——大自然的随机艺术永远比精心设计更震撼。",
    u:"https://www.xiaohongshu.com/search_result?keyword=我拍到了海鸥雨&type=51",
-   img:"摄影", c:"linear-gradient(135deg,#a18cd1,#fbc2eb)"},
-  {r:4, t:"超日常美食教程速来get", v:"867.6万", g:"🍜 美食",
+   ic:"📸",c:"linear-gradient(135deg,#a18cd1,#fbc2eb)"},
+  {r:4,t:"超日常美食教程速来get",v:"867.6万",g:"🍜 美食",
    s:"10分钟搞定有仪式感的一餐！不想点外卖又懒得做大菜？厨房小白也能秒变大厨。",
    u:"https://www.xiaohongshu.com/search_result?keyword=超日常美食教程速来get&type=51",
-   img:"美食", c:"linear-gradient(135deg,#f6d365,#fda085)"},
-  {r:5, t:"定格这一刻的日照金山", v:"857万", g:"🏔 旅行",
+   ic:"🍜",c:"linear-gradient(135deg,#f6d365,#fda085)"},
+  {r:5,t:"定格这一刻的日照金山",v:"857万",g:"🏔 旅行",
    s:"梅里雪山的日照金山被完美定格——高反也值得，这是大自然给早起的人最大的奖赏。",
    u:"https://www.xiaohongshu.com/search_result?keyword=定格这一刻的日照金山&type=51",
-   img:"旅行", c:"linear-gradient(135deg,#667eea,#764ba2)"},
-  {r:6, t:"拍到了洱海的丁达尔效应", v:"695.5万", g:"📸 摄影",
+   ic:"🏔️",c:"linear-gradient(135deg,#667eea,#764ba2)"},
+  {r:6,t:"拍到了洱海的丁达尔效应",v:"695.5万",g:"📸 摄影",
    s:"阳光穿过云层洒向洱海形成完美光束——不是滤镜，是大自然自己的光影魔法。",
    u:"https://www.xiaohongshu.com/search_result?keyword=拍到了洱海的丁达尔效应&type=51",
-   img:"摄影", c:"linear-gradient(135deg,#4facfe,#00f2fe)"},
-  {r:7, t:"珠圆玉润妆完全是淡颜天菜", v:"684.7万", g:"💄 美妆",
+   ic:"🌅",c:"linear-gradient(135deg,#4facfe,#00f2fe)"},
+  {r:7,t:"珠圆玉润妆完全是淡颜天菜",v:"684.7万",g:"💄 美妆",
    s:"淡颜系本命妆容！光泽感取代浓墨重彩，温柔又高级——越看越耐看。",
    u:"https://www.xiaohongshu.com/search_result?keyword=珠圆玉润妆完全是淡颜天菜&type=51",
-   img:"美妆", c:"linear-gradient(135deg,#f093fb,#f5576c)"},
-  {r:8, t:"碎钻美甲指尖藏着细碎星光", v:"652万", g:"💅 美甲",
+   ic:"💄",c:"linear-gradient(135deg,#f093fb,#f5576c)"},
+  {r:8,t:"碎钻美甲指尖藏着细碎星光",v:"652万",g:"💅 美甲",
    s:"把星空藏在指尖——极细闪粉和碎钻打造「指尖星河」，举手投足都是细碎的光。",
    u:"https://www.xiaohongshu.com/search_result?keyword=碎钻美甲指尖藏着细碎星光&type=51",
-   img:"美甲", c:"linear-gradient(135deg,#b224ef,#7579ff)"},
-  {r:9, t:"我来当旅行中的颜色猎手", v:"642.3万", g:"🎨 生活",
+   ic:"💅",c:"linear-gradient(135deg,#b224ef,#7579ff)"},
+  {r:9,t:"我来当旅行中的颜色猎手",v:"642.3万",g:"🎨 生活",
    s:"把旅行变成颜色收集游戏！在每个城市寻找它的代表色——你的城市是什么颜色？",
    u:"https://www.xiaohongshu.com/search_result?keyword=我来当旅行中的颜色猎手&type=51",
-   img:"生活", c:"linear-gradient(135deg,#fc5c7d,#6a82fb)"},
+   ic:"🎨",c:"linear-gradient(135deg,#fc5c7d,#6a82fb)"},
 ];
 
-const themes = {1:{n:"☀️ 明亮活力",b:"theme-1",t:"☀️ 小红书的快乐星球",d:"今天大家都在看什么？一份充满阳光的热门指南 ✨",l:"阳光爆款",e:"🏆"},
-                2:{n:"🌸 元气满满",b:"theme-2",t:"🌸 今天也是元气满满的一天",d:"粉粉嫩嫩的热门合集，专治不开心 💖",l:"甜心精选",e:"💖"},
-                3:{n:"🌊 清新治愈",b:"theme-3",t:"🌊 在夏天的风里刷小红书",d:"薄荷味的热门推荐，清凉一夏 🍃",l:"治愈清单",e:"🍃"}};
-
-const imgEmoji = {旅行:"🏔️",文化:"🏮",摄影:"📸",美食:"🍜",美妆:"💄",美甲:"💅",生活:"🎨",摄影:"📸"};
+const themes = {
+  1:{n:"☀️ 明亮活力",c:"t1",t:"☀️ 小红书的快乐星球",d:"今天大家都在看什么？一份阳光热门指南 ✨",l:"阳光爆款",e:"🏆",h:"#ff6b35"},
+  2:{n:"🌸 元气满满",c:"t2",t:"🌸 今天也元气满满",d:"粉粉嫩嫩的热门合集，专治不开心 💖",l:"甜心精选",e:"💖",h:"#e84393"},
+  3:{n:"🌊 清新治愈",c:"t3",t:"🌊 在夏天的风里刷小红书",d:"薄荷味的热门推荐，清凉一夏 🍃",l:"治愈清单",e:"🍃",h:"#00b894"}
+};
 
 function render(){
-  const now=new Date();document.getElementById('todayTag').textContent=
-    `${now.getFullYear()}.${now.getMonth()+1}.${now.getDate()} 实时`;
+  const n=new Date();document.getElementById('todayTag').textContent=`${n.getFullYear()}.${n.getMonth()+1}.${n.getDate()}`;
   document.getElementById('topPicks').innerHTML=posts.slice(0,3).map(p=>
-    `<a class="top-pick" href="${p.u}" target="_blank" rel="noopener">⭐ #${p.r} ${p.t.slice(0,12)}</a>`
+    `<a href="${p.u}" target="_blank" rel="noopener">⭐ #${p.r} ${p.t.slice(0,12)}</a>`
   ).join('');
-  const tags=[...new Set(posts.map(p=>p.g))];
+  const ts=[...new Set(posts.map(p=>p.g))];
   const tv=posts.reduce((s,p)=>s+parseFloat(p.v),0);
   document.getElementById('statsRow').innerHTML=
-    `<div class="stat-card"><div class="num">${posts.length}</div><div class="lbl">🔥 今日热门</div></div>`+
-    `<div class="stat-card"><div class="num">${tags.length}</div><div class="lbl">🏷️ 覆盖领域</div></div>`+
-    `<div class="stat-card"><div class="num">${(tv/10000).toFixed(1)}亿</div><div class="lbl">👁️ 总浏览量</div></div>`+
-    `<div class="stat-card"><div class="num">🏔️📸🍜💄</div><div class="lbl">旅行·摄影·美食·美妆</div></div>`;
+    `<div class="st-c"><div class="n">${posts.length}</div><div class="l">🔥 今日热门</div></div>`+
+    `<div class="st-c"><div class="n">${ts.length}</div><div class="l">🏷️ 覆盖领域</div></div>`+
+    `<div class="st-c"><div class="n">${(tv/10000).toFixed(1)}亿</div><div class="l">👁️ 总浏览</div></div>`+
+    `<div class="st-c"><div class="n">🏔️📸🍜</div><div class="l">旅行·摄影·美食</div></div>`;
   const tp=posts[0];
   document.getElementById('recSection').innerHTML=
-    `<div class="rec-card"><div class="rec-icon">🏆</div><div class="rec-body"><div class="rec-label">⭐ 今日重点推荐</div><div class="rec-title">#${tp.r} ${tp.t}</div><div class="rec-desc">${tp.s}</div></div><a class="rec-btn" href="${tp.u}" target="_blank" rel="noopener">去看看 → ${tp.v}</a></div>`;
+    `<div class="rc"><div class="rc-i">🏆</div><div class="rc-b"><div class="rc-l">⭐ 今日重点推荐</div><div class="rc-t">#${tp.r} ${tp.t}</div><div class="rc-d">${tp.s}</div></div><a href="${tp.u}" target="_blank" rel="noopener">去看看 → ${tp.v}</a></div>`;
   renderCards();
 }
 
 function renderCards(){
-  document.getElementById('cardGrid').innerHTML=posts.map(p=>{
-    const ic = imgEmoji[p.img]||"✨";
-    return `<a class="card" href="${p.u}" target="_blank" rel="noopener noreferrer">
-      <div class="topic-img" style="background:${p.c}">
-        <span style="font-size:64px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.1));position:relative;z-index:1;">${ic}</span>
-        <div class="card-rank">${p.r}</div>
-        <div class="card-topic-tag">${p.g}</div>
+  document.getElementById('cardGrid').innerHTML=posts.map(p=>
+    `<a class="card" href="${p.u}" target="_blank" rel="noopener noreferrer">
+      <div class="ti" style="background:${p.c}"><span class="emo">${p.ic}</span>
+        <div class="ti-rk">${p.r}</div><div class="ti-tg">${p.g}</div>
       </div>
-      <div class="card-body">
-        <div class="card-title">${p.t}</div>
-        <div class="card-views">👁️ ${p.v} 浏览</div>
-        <div class="card-summary">${p.s}</div>
-        <div class="card-go">去小红书看看 →</div>
+      <div class="card-b">
+        <div class="card-t">${p.t}</div>
+        <div class="card-v">👁️ ${p.v}</div>
+        <div class="card-s">${p.s}</div>
+        <div class="card-g">去小红书看看 →</div>
       </div>
-    </a>`;
-  }).join('');
+    </a>`
+  ).join('');
 }
 
 function setTheme(n){
   const t=themes[n];
-  document.body.className=t.b;
-  document.querySelector('.top-bar').style.background=
-    n===1?'linear-gradient(135deg,#ff6b35,#ffb347,#ffd54f)':
-    n===2?'linear-gradient(135deg,#e84393,#fd79a8,#e17055)':
-    'linear-gradient(135deg,#00b894,#00cec9,#0984e3)';
+  document.body.className=t.c;
+  document.querySelector('.top').style.background=
+    n===1?'linear-gradient(135deg,#ff6b35,#ffb347)':
+    n===2?'linear-gradient(135deg,#e84393,#fd79a8)':
+    'linear-gradient(135deg,#00b894,#00cec9)';
   document.getElementById('heroTitle').textContent=t.t;
   document.getElementById('heroDesc').textContent=t.d;
   document.getElementById('themeLabel').textContent=t.l;
-  document.querySelectorAll('.sw-btn').forEach((b,i)=>b.classList.toggle('active',i+1===n));
-  // Update recommendation icon
-  const ri=document.querySelector('.rec-icon');
-  if(ri)ri.textContent=n===1?'🏆':n===2?'💖':'🍃';
+  document.getElementById('selIcon').textContent=t.e;
+  document.getElementById('themeSelect').value=n;
+  // Update rec icon
+  const ri=document.querySelector('.rc-i');
+  if(ri)ri.textContent=t.e;
 }
 
 render();
