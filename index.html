@@ -91,7 +91,7 @@ footer{padding:24px 0 40px;text-align:center;font-size:12px;color:var(--mute)}
 <div class="tab-bar">
   <div class="tab-in">
     <button class="tab active" data-tab="0" onclick="switchTab(0)">🔥 热门话题</button>
-    <button class="tab" data-tab="1" onclick="switchTab(1)">📈 涨粉账号</button>
+    <button class="tab" data-tab="1" onclick="switchTab(1)">🚀 新人涨粉</button>
     <button class="tab" data-tab="2" onclick="switchTab(2)">💥 热门笔记</button>
     <div class="tab-r">
       <select id="themeSelect" onchange="setTheme(+this.value)">
@@ -137,32 +137,32 @@ const DATA = [
        u:"https://www.xiaohongshu.com/search_result?keyword=我来当旅行中的颜色猎手&type=51"}
     ]
   },
-  // Tab 1: 涨粉账号 (千瓜涨粉榜)
+  // Tab 1: 涨粉新人 (千瓜涨粉榜-腰部/初级达人)
   {
-    title:"📈 一周涨粉最快", stat:["10 个账号","最高 127万","增粉 4-28%","体育·媒体·教育"],
-    rec:{i:"📈",l:"本周涨粉王",t:"#1 小红书体育 · +127.5万粉",d:"世界杯热度带动，体育类账号迎来爆发式增长。官方号+体育名人霸榜，涨粉率高达28.71%。",
-        v:"127.51万",u:"https://www.qian-gua.com/rank/fans"},
+    title:"📈 新人涨粉榜", stat:["10 位新人","最高69.5%涨粉","仅1.2万粉黑马","搞笑·美食·娱乐"],
+    rec:{i:"🚀",l:"本周新人王",t:"#1 亿点儿 · 涨粉率69.5%",d:"搞笑内容赛道杀出黑马！仅10万粉丝的腰部达人「亿点儿」以69.5%涨粉率登顶，内容精准击中年轻人笑点。",
+        v:"+7.3万",u:"https://www.qian-gua.com/rank/fans"},
     cards:[
-      {r:1,t:"小红书体育",v:"+127.5万",g:"📺 官方号",s:"涨粉率28.71% · 总粉444万 · 世界杯热度带动官方号暴涨",
-       u:"https://www.qian-gua.com/rank/fans",m:["官方号","体育","金冠薯"]},
-      {r:2,t:"央视频",v:"+2.96万",g:"📺 企业号",s:"涨粉率4.49% · 总粉66万 · 央视融媒体矩阵持续吸粉",
-       u:"https://www.qian-gua.com/rank/fans",m:["企业号","媒体","高权重"]},
-      {r:3,t:"央视网",v:"+1.82万",g:"📺 企业号",s:"涨粉率1.05% · 总粉174万 · 权威媒体账号稳定增长",
-       u:"https://www.qian-gua.com/rank/fans",m:["媒体","官方","新闻"]},
-      {r:4,t:"po老师（英语版）",v:"+1.77万",g:"📚 教育",s:"涨粉率9.29% · 总粉19万 · 英语教学垂类黑马，内容实用性强",
-       u:"https://www.qian-gua.com/rank/fans",m:["腰部达人","教育","英语"]},
-      {r:5,t:"范志毅",v:"+1.68万",g:"⚽ 体育",s:"涨粉率5.44% · 总粉31万 · 足球名人效应+世界杯话题加持",
-       u:"https://www.qian-gua.com/rank/fans",m:["明星","体育","足球"]},
-      {r:6,t:"小红书足球",v:"+1.57万",g:"📺 官方号",s:"涨粉率20.88% · 总粉7.5万 · 世界杯期间足球官方号增速惊人",
-       u:"https://www.qian-gua.com/rank/fans",m:["官方号","体育","高增长"]},
-      {r:7,t:"小胡同学呀",v:"+1.55万",g:"🎬 娱乐",s:"涨粉率0.49% · 总粉318万 · 头部娱乐达人持续稳增",
-       u:"https://www.qian-gua.com/rank/fans",m:["头部达人","娱乐","金冠薯"]},
-      {r:8,t:"杨超越",v:"+1.51万",g:"🎤 明星",s:"涨粉率0.81% · 总粉186万 · 明星效应+近期综艺热度",
-       u:"https://www.qian-gua.com/rank/fans",m:["明星","文化薯","娱乐"]},
-      {r:9,t:"薯队长",v:"+1.48万",g:"📢 官方号",s:"涨粉率0.18% · 总粉823万 · 平台官方号稳定霸榜",
-       u:"https://www.qian-gua.com/rank/fans",m:["官方号","平台","金冠薯"]},
-      {r:10,t:"姜乘澜",v:"+1.42万",g:"🎨 时尚",s:"涨粉率0.42% · 总粉336万 · 时尚领域头部达人",
-       u:"https://www.qian-gua.com/rank/fans",m:["头部达人","时尚","高粉"]}
+      {r:1,t:"亿点儿",v:"+7.3万 · 涨粉69.5%",g:"📱 搞笑",s:"涨粉率69.5%登顶！仅10万粉的腰部达人，搞笑内容精准击中用户笑点",
+       u:"https://www.qian-gua.com/rank/fans",m:["腰部达人","高增长","搞笑"]},
+      {r:2,t:"科研牛吗日常",v:"+13.8万赞藏",g:"🔬 科研",s:"仅1.2万粉的初级达人，赞藏增量13.8万！科研日常内容差异化明显",
+       u:"https://www.qian-gua.com/rank/fans",m:["初级达人","黑马","学术"]},
+      {r:3,t:"干饭小魔女鸣酱",v:"+25.1万赞藏",g:"🍜 美食",s:"5.7万粉产出25万赞藏增量，美食内容互动率惊人，千瓜指数953",
+       u:"https://www.qian-gua.com/rank/fans",m:["腰部达人","金冠薯","美食"]},
+      {r:4,t:"王一188",v:"+8.3万 · 涨粉43.4%",g:"🎨 时尚",s:"涨粉率43.4%！时尚领域腰部达人快速崛起，签约MCN后内容质量提升显著",
+       u:"https://www.qian-gua.com/rank/fans",m:["腰部达人","金冠薯","时尚"]},
+      {r:5,t:"一口娱子酱",v:"+35.2万赞藏",g:"🎬 娱乐",s:"周增35万赞藏！腰部娱乐号凭借独家内容实现爆发式增长",
+       u:"https://www.qian-gua.com/rank/fans",m:["腰部达人","金冠薯","娱乐"]},
+      {r:6,t:"花花鲤娱酱",v:"+26.7万赞藏",g:"🎬 娱乐",s:"13万粉产出26.7万赞藏增量，娱乐资讯类内容持续走俏",
+       u:"https://www.qian-gua.com/rank/fans",m:["腰部达人","高互动","娱乐"]},
+      {r:7,t:"捕娱家",v:"+26.8万赞藏",g:"🎬 娱乐",s:"腰部娱乐号典范，赞藏增量26.8万，千瓜指数952",
+       u:"https://www.qian-gua.com/rank/fans",m:["腰部达人","金冠薯","资讯"]},
+      {r:8,t:"摸娱大芝麻",v:"+14.2万赞藏",g:"🎬 娱乐",s:"13万粉腰部达人，娱乐内容稳定高产，互动率持续走高",
+       u:"https://www.qian-gua.com/rank/fans",m:["腰部达人","金冠薯","稳定增长"]},
+      {r:9,t:"歪小鱼",v:"+13.4万赞藏",g:"🎬 娱乐",s:"签约新偶文化后内容品质提升，赞藏增量13.4万",
+       u:"https://www.qian-gua.com/rank/fans",m:["腰部达人","签约MCN","娱乐"]},
+      {r:10,t:"福气小师妹",v:"+14.2万赞藏",g:"🌸 生活",s:"腰部达人持续产出优质生活内容，千瓜指数964",
+       u:"https://www.qian-gua.com/rank/fans",m:["腰部达人","高指数","生活"]}
     ]
   },
   // Tab 2: 热门笔记 (千瓜行业榜-赞藏增量最高)
